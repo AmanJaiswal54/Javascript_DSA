@@ -107,6 +107,22 @@ class SingleLL {
     this.length--;
     console.log('Remove--', this);
   }
+
+  reverse() {
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+    let next;
+    let prev = null;
+    while(temp !== null) {
+      next = temp.next;
+      temp.next = prev;
+      prev = temp;
+      temp = next;
+
+    }
+    console.log('Reverse--', this);
+  }
 }
 
 let linkedList = new SingleLL();
@@ -122,3 +138,4 @@ linkedList.get(2);
 linkedList.set(3, 42);
 linkedList.insert(3, 32);
 linkedList.remove(2);
+linkedList.reverse();
