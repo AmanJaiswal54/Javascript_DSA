@@ -83,7 +83,21 @@ class DoublyLinkedList {
   set(index, value) {
     let currentNode = this.get(index);
     currentNode.value = value;
-    console.log("SET--", currentNode);
+    console.log("SET--", this);
+  }
+  reverse() {
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+    let next = this.head;
+    let prev = null;
+    while(next) {
+      next = temp.next;
+      temp.next = prev;
+      prev = temp;
+      temp = next;
+    }
+    console.log('REVERSE--', this);
   }
 }
 
@@ -98,3 +112,4 @@ doublyLL.unshift(9);
 doublyLL.shift();
 doublyLL.get(2);
 doublyLL.set(2, 10);
+doublyLL.reverse();
