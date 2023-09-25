@@ -70,7 +70,6 @@ class BinarySearchTree {
     let current = this.root;
     queue.push(current);
     while (queue.length) {
-      console.log("queue", queue);
       current = queue.shift();
       visited.push(current.value);
       if (current.left) {
@@ -81,6 +80,54 @@ class BinarySearchTree {
       }
     }
     console.log("BFS Results--", visited);
+  }
+
+  depthFirstSearchPreOrder() {
+    let current = this.root;
+    let visited = [];
+    function helper(node) {
+      visited.push(node.value);
+      if (node.left) {
+        helper(node.left);
+      }
+      if (node.right) {
+        helper(node.right);
+      }
+    }
+    helper(current);
+    console.log("DFS PreOrder Results--", visited);
+  }
+
+  depthFirstSearchPostOrder() {
+    let current = this.root;
+    let visited = [];
+    function helper(node) {
+      if (node.left) {
+        helper(node.left);
+      }
+      if (node.right) {
+        helper(node.right);
+      }
+      visited.push(node.value);
+    }
+    helper(current);
+    console.log("DFS PostOrder Results--", visited);
+  }
+
+  depthFirstSearchInOrder() {
+    let current = this.root;
+    let visited = [];
+    function helper(node) {
+      if (node.left) {
+        helper(node.left);
+      }
+      visited.push(node.value);
+      if (node.right) {
+        helper(node.right);
+      }
+    }
+    helper(current);
+    console.log("DFS InOrder Results--", visited);
   }
 }
 
@@ -99,3 +146,6 @@ binarySearchTree.find(25);
 binarySearchTree.find(5);
 
 binarySearchTree.breadthFirstSearch();
+binarySearchTree.depthFirstSearchPreOrder();
+binarySearchTree.depthFirstSearchPostOrder();
+binarySearchTree.depthFirstSearchInOrder();
