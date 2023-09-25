@@ -10,7 +10,6 @@ class BinarySearchTree {
   constructor() {
     this.root = null;
   }
-  
   insert(val) {
     let newNode = new Node(val);
     if (!this.root) {
@@ -64,6 +63,25 @@ class BinarySearchTree {
       }
     }
   }
+
+  breadthFirstSearch() {
+    let queue = [];
+    let visited = [];
+    let current = this.root;
+    queue.push(current);
+    while (queue.length) {
+      console.log("queue", queue);
+      current = queue.shift();
+      visited.push(current.value);
+      if (current.left) {
+        queue.push(current.left);
+      }
+      if (current.right) {
+        queue.push(current.right);
+      }
+    }
+    console.log("BFS Results--", visited);
+  }
 }
 
 let binarySearchTree = new BinarySearchTree();
@@ -79,3 +97,5 @@ binarySearchTree.find(14);
 binarySearchTree.find(10);
 binarySearchTree.find(25);
 binarySearchTree.find(5);
+
+binarySearchTree.breadthFirstSearch();
