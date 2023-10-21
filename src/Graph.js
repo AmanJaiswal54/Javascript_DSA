@@ -33,6 +33,23 @@ class Graph {
 
     console.log("removeVertex", this.adjacencyList);
   }
+
+  depthFirstTraverseUsingRecusion(startVertex) {
+    let visited = {};
+    let result = [];
+    const helper = (vertex) => {
+      visited[vertex] = true;
+      result.push(vertex);
+      let connectedVertex = this.adjacencyList[vertex];
+      connectedVertex.forEach((vertex) => {
+        if (!visited[vertex]) {
+          helper(vertex);
+        }
+      });
+    };
+    helper(startVertex);
+    console.log("depthFirstTraverseUsingRecusion Result", result);
+  }
 }
 
 let graphInstance = new Graph();
@@ -54,3 +71,15 @@ graphInstance.addEdge("D", "E");
 graphInstance.removeEdge("A", "E");
 
 graphInstance.removeVertex("E");
+
+graphInstance.depthFirstTraverseUsingRecusion("A");
+console.log(
+  "depthFirstTraverseUsingRecusion Result",
+  `
+      A
+    / | \
+    B |  D
+    \ | /
+      C
+      `
+);
