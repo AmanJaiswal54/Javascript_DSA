@@ -57,7 +57,6 @@ class Graph {
     visited[startVertex] = true;
     queue.push(startVertex);
     while (queue.length) {
-      console.log("queue", queue);
       let currentVertex = queue.shift();
       result.push(currentVertex);
       this.adjacencyList[currentVertex].forEach((vertex) => {
