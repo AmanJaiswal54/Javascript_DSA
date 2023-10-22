@@ -40,8 +40,8 @@ class Graph {
     const helper = (vertex) => {
       visited[vertex] = true;
       result.push(vertex);
-      let connectedVertex = this.adjacencyList[vertex];
-      connectedVertex.forEach((vertex) => {
+      let connectedVertices = this.adjacencyList[vertex];
+      connectedVertices.forEach((vertex) => {
         if (!visited[vertex]) {
           helper(vertex);
         }
@@ -49,6 +49,26 @@ class Graph {
     };
     helper(startVertex);
     console.log("depthFirstTraverseUsingRecusion Result", result);
+  }
+  breathFirst(startVertex) {
+    let visited = {};
+    let result = [];
+    let queue = [];
+    visited[startVertex] = true;
+    queue.push(startVertex);
+    while (queue.length) {
+      console.log("queue", queue);
+      let currentVertex = queue.shift();
+      result.push(currentVertex);
+      this.adjacencyList[currentVertex].forEach((vertex) => {
+        if (!visited[vertex]) {
+          visited[vertex] = true;
+          queue.push(vertex);
+        }
+      });
+    }
+
+    console.log("breathFirst Result", result);
   }
 }
 
@@ -60,7 +80,6 @@ graphInstance.addVertex("D");
 graphInstance.addVertex("E");
 
 graphInstance.addEdge("A", "B");
-graphInstance.addEdge("A", "C");
 graphInstance.addEdge("A", "D");
 graphInstance.addEdge("A", "E");
 graphInstance.addEdge("B", "C");
@@ -73,6 +92,7 @@ graphInstance.removeEdge("A", "E");
 graphInstance.removeVertex("E");
 
 graphInstance.depthFirstTraverseUsingRecusion("A");
+graphInstance.breathFirst("A");
 console.log(
   "depthFirstTraverseUsingRecusion Result",
   `
