@@ -1,6 +1,4 @@
-let inputArr = [14, 3, 10, 45, 33, 41, 12, 4];
-
-function mergeSortHelper(arr1, arr2) {
+function mergeHelper(arr1, arr2) {
   let result = [];
   let i = 0;
   let j = 0;
@@ -27,15 +25,12 @@ function mergeSortHelper(arr1, arr2) {
   return result;
 }
 
-// mergeSortHelper([2, 4, 6, 8, 10], [1, 3, 5, 7, 9, 11]);
-
 function mergeSort(arr) {
   if (arr.length <= 1) return arr;
   let midPoint = Math.floor(arr.length / 2);
   let left = mergeSort(arr.slice(0, midPoint));
   let right = mergeSort(arr.slice(midPoint));
-  return mergeSortHelper(left, right);
+  return mergeHelper(left, right);
 }
-
-let result = mergeSort(inputArr);
-console.log("MERGE SORT RESULT--", result); // [3, 4, 10, 12, 14, 33, 41, 45]
+let result = mergeSort([3, 1, 8, 6, 21, 12, 15, 4, 2]);
+console.log("RESULT", result);
