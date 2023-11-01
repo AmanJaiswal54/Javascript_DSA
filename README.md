@@ -1,2 +1,1 @@
-# Javascript
-Created with CodeSandbox
+# Javascript Data Structures and Algorithm Interview Questions
