@@ -3,6 +3,9 @@ let arr = [2, 5, 12, 30, 25, 40];
 Array.prototype.myOwnSlice = function (lowerLimit, upperLimit) {
   let result = [];
   let arr = this;
+  
+  // scenario is pending, if upperLimit or lowerLimit is -ve.
+  
   if (upperLimit > lowerLimit) {
     for (let i = lowerLimit; i < upperLimit; i++) {
       result.push(arr[i]);
